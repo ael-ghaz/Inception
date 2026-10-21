@@ -19,6 +19,6 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2050 \
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
-COPY index.html /var/www/wordpress/index.html
+# COPY /html/index.html /var/www/wordpress/index.html
 
 CMD ["nginx", "-g", "daemon off;"]
