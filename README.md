@@ -9,7 +9,7 @@ This project aims to learn how to build a system administration by using Docker.
 ### Keywords
 
 - Docker, Nginx, MariaDB, Wordpress
-- proxy, HTTP, FASTCGI, Entrypoints, 
+- proxy, HTTP, FASTCGI, Entrypoints
 
 ## INSTRUCTIONS
 

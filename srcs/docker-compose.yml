@@ -1,11 +1,29 @@
 services:
-  web:
-    image: nginx:latest
+  nginx:
+    build: ./requirements/nginx
+    image: nginx_inception
+    container_name: nginx
     restart: always
-    container_name: mynginx
-    tty: true
-    build: /home/ael-ghaz/Desktop/Inception/srcs/requirements/nginx/
     ports:
       - "443:443"
     volumes:
       - ./requirements/nginx/html/:/var/www/wordpress/
+    networks:
+      - inception_network
+
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress_inception
+    container_name: wordpress
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./requirements/nginx/html/:/var/www/wordpress/
+    networks:
+      - inception_network
+
+  
+networks:
+  inception_network:
+    driver: bridge
