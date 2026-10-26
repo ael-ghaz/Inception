@@ -4,7 +4,7 @@ if [ ! -f /usr/local/bin/wp ]; then
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
     chmod +x wp-cli.phar
     mv wp-cli.phar /usr/local/bin/wp
-
+fi
 
 if [ ! -f /var/www/wordpress/wp-config.php ]; then
     wp core download --allow-root
@@ -12,7 +12,7 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
     wp config create \
         --dbname=${MYSQL_DATABASE} \
         --dbuser=${MYSQL_USER} \
-        --dbpassword=${MYSQL_PASSWORD} \
+        --dbpass=${MYSQL_PASSWORD} \
         --dbhost=${MYSQL_HOST} \
         --allow-root
     
@@ -32,4 +32,4 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 
 fi
 
-exec "$@"
+exec "${@}"

@@ -7,6 +7,7 @@ RUN apt update && apt-get install -y \
     php-fpm \
     php-mysql \
     curl \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 
@@ -18,6 +19,8 @@ COPY tools/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 WORKDIR /var/www/wordpress
+
+EXPOSE 9000
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 

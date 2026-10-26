@@ -8,6 +8,7 @@ ENV path_ssl=/etc/nginx/ssl
 RUN apt-get update && apt-get install -y \
     nginx \
     openssl \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p ${path_ssl}
@@ -20,5 +21,7 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2050 \
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
 # COPY /html/index.html /var/www/wordpress/index.html
+
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
