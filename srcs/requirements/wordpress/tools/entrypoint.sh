@@ -32,4 +32,4 @@ if [ ! -f /var/www/wordpress/wp-config.php ]; then
 
 fi
 
-exec "${@}"
+exec "$@"

@@ -7,7 +7,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ~/ael-ghaz/data/nginx:/var/www/wordpress/
+      - ~/ael-ghaz/data/wordpress:/var/www/wordpress/
     networks:
       - inception_network
 
@@ -25,6 +25,17 @@ services:
     networks:
       - inception_network
 
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb_inception
+    container_name: mariadb
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ~/ael-ghaz/data/mariadb:/var/lib/mysql
+    networks:
+      - inception_network
   
 networks:
   inception_network:
