@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # check=error=true
 
-FROM debian:oldstable
+FROM debian:bookworm
 
 RUN apt update && apt-get install -y \
     php-fpm \
