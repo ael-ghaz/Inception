@@ -35,6 +35,8 @@ services:
     restart: always
     env_file:
       - .env
+    environment:
+      MYSQL_HOST: ""
     volumes:
       - mariadb:/var/lib/mysql
     networks:
@@ -61,16 +63,15 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      device: ~/ael-ghaz/data/wordpress
+      device: /home/ael-ghaz/data/wordpress
   mariadb:
     name: mariadb
     driver: local
     driver_opts:
       type: none
       o: bind
-      device: ~/ael-ghaz/data/mariadb
+      device: /home/ael-ghaz/data/mariadb
 
 networks:
   inception_network:
     driver: bridge
-
